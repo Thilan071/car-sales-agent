@@ -284,46 +284,76 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   }
 
   Widget buildUserForm() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Welcome! Please enter your details to start chatting.',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 20),
-          TextField(
-            controller: _nameController,
-            decoration: const InputDecoration(
-              labelText: 'Full Name',
-              border: OutlineInputBorder(),
+    return Container(
+      color: Colors.black, // Set background color
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Welcome! Please enter your details to start chatting.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color:
+                    Colors.white, // Ensure text is visible on blue background
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          TextField(
-            controller: _emailController,
-            decoration: const InputDecoration(
-              labelText: 'Email Address',
-              border: OutlineInputBorder(),
+            const SizedBox(height: 20),
+            TextField(
+              controller: _nameController,
+              style: const TextStyle(color: Colors.white), // White text color
+              decoration: InputDecoration(
+                labelText: 'Full Name',
+                labelStyle: const TextStyle(color: Colors.white), // White label
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                filled: true,
+                fillColor:
+                    Colors.blue[700], // Darker shade of blue for input box
+              ),
             ),
-            keyboardType: TextInputType.emailAddress,
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              if (_nameController.text.isNotEmpty &&
-                  _emailController.text.isNotEmpty) {
-                setState(() {
-                  _isUserRegistered = true;
-                });
-              }
-            },
-            child: const Text('Start Chat'),
-          ),
-        ],
+            const SizedBox(height: 10),
+            TextField(
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
+              style: const TextStyle(color: Colors.white), // White text color
+              decoration: InputDecoration(
+                labelText: 'Email Address',
+                labelStyle: const TextStyle(color: Colors.white), // White label
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                filled: true,
+                fillColor:
+                    Colors.blue[700], // Darker shade of blue for input box
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                if (_nameController.text.isNotEmpty &&
+                    _emailController.text.isNotEmpty) {
+                  setState(() {
+                    _isUserRegistered = true;
+                  });
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white, // White button
+                foregroundColor: Colors.blue, // Blue text
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 40,
+                  vertical: 12,
+                ),
+              ),
+              child: const Text('Start Chat'),
+            ),
+          ],
+        ),
       ),
     );
   }
