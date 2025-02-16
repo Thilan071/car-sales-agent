@@ -278,7 +278,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Chatbot Interface')),
+      appBar: AppBar(title: const Text('WELCOME TO THE ABC CHATBOT')),
       body: _isUserRegistered ? buildChatInterface() : buildUserForm(),
     );
   }
